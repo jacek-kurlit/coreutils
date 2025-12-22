@@ -602,6 +602,7 @@ mod tests {
         let result = determine_backup_mode(&matches).unwrap();
 
         assert_eq!(result, BackupMode::Numbered);
+        // cleaning up because this can affect tests that rely on env state
         unsafe { env::remove_var(ENV_VERSION_CONTROL) };
     }
 
@@ -615,6 +616,7 @@ mod tests {
         let result = determine_backup_mode(&matches).unwrap();
 
         assert_eq!(result, BackupMode::None);
+        // cleaning up because this can affect tests that rely on env state
         unsafe { env::remove_var(ENV_VERSION_CONTROL) };
     }
 
@@ -630,6 +632,7 @@ mod tests {
         assert!(result.is_err());
         let text = format!("{}", result.unwrap_err());
         assert!(text.contains("invalid argument 'foobar' for '$VERSION_CONTROL'"));
+        // cleaning up because this can affect tests that rely on env state
         unsafe { env::remove_var(ENV_VERSION_CONTROL) };
     }
 
@@ -645,6 +648,7 @@ mod tests {
         assert!(result.is_err());
         let text = format!("{}", result.unwrap_err());
         assert!(text.contains("ambiguous argument 'n' for '$VERSION_CONTROL'"));
+        // cleaning up because this can affect tests that rely on env state
         unsafe { env::remove_var(ENV_VERSION_CONTROL) };
     }
 
@@ -658,6 +662,7 @@ mod tests {
         let result = determine_backup_mode(&matches).unwrap();
 
         assert_eq!(result, BackupMode::Simple);
+        // cleaning up because this can affect tests that rely on env state
         unsafe { env::remove_var(ENV_VERSION_CONTROL) };
     }
 
@@ -682,6 +687,7 @@ mod tests {
         let result = determine_backup_mode(&matches).unwrap();
 
         assert_eq!(result, BackupMode::Numbered);
+        // cleaning up because this can affect tests that rely on env state
         unsafe { env::remove_var(ENV_VERSION_CONTROL) };
     }
 
